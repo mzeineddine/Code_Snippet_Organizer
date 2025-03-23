@@ -1,0 +1,10 @@
+:root {
+  /* Snippet Colors */
+  --snippet-bg: rgb(48, 48, 48);
+  --snippet-color: rgb(255, 255, 255);
+  --snippet-border-radius: 10px;
+
+  /* Inputs Colors */
+  --input-bg: #EEEEEE;
+  --input-color: rgb(0, 0, 0);
+}
