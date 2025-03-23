@@ -1,0 +1,39 @@
+.signup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--snippet-bg)
+}
+
+.signup form{
+    padding: 2em;
+    border-radius: 10px;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+    background-color: white;
+}
+
+.signup form div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.signup form div input{
+    width: 100%;
+    height: 2em;
+    border-radius: 5px;
+    padding: 0.5em;
+    background-color: var(--input-bg);
+}
+
+.signup form button{
+    padding: 0.25em 0.5em;
+    color: white;
+    background-color: var(--button-bg);
+    border-radius: 5px;
+}
