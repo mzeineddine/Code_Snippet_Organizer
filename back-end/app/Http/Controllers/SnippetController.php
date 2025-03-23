@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 class SnippetController extends Controller
 {
     //
+    function getSnippet(Request $request){
+        $snippets = Snippet::all();
+        return response()->json([
+            "success" => "true",
+            "snippets" => $snippets,
+        ]);
+    }
     function addOrUpdateSnippet(Request $request){
         if(!$request["id"]){
             $snippet = new Snippet();

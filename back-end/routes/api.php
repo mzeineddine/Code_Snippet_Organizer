@@ -14,6 +14,7 @@ Route::group(["prefix" => "v0.1"], function(){
         Route::get('/validate-token',[AuthController::class, "validate_token"]);
 
         //Snippets APIs
+        Route::post("/get_Snippet",[SnippetController::class, 'getSnippet']);
         Route::post('/delete_snippet', [SnippetController::class, "deleteSnippet"]);
         Route::post('/add_update_snippet', [SnippetController::class, "addOrUpdateSnippet"]);
 
