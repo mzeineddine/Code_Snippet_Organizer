@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Snippet;
 use App\Models\Tag;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
+use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 class SnippetController extends Controller
 {
@@ -17,6 +19,7 @@ class SnippetController extends Controller
         ]);
     }
     function addOrUpdateSnippet(Request $request){
+        $user = JWTAuth::parseToken()->authenticate();
         if(!$request["id"]){
             $snippet = new Snippet();
             $snippet_tags = null;
@@ -31,7 +34,7 @@ class SnippetController extends Controller
             }
         }
 
-        $snippet->user_id = $request["user_id"] ? $request["user_id"] : $snippet->user_id;
+        $snippet->user_id = $user->id;
         $snippet->title = $request["title"] ? $request["title"] : $snippet->title;
         $snippet->content = $request["content"] ? $request["content"] : $snippet->content;
         $snippet->language = $request["language"] ? $request["language"] : $snippet->language;

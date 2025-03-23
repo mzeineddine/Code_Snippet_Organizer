@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import NavBar from "./components/NavBar"
-// import Add_Snippet from "./pages/Add_Snippet"
+import Add_Snippet from "./pages/Add_Snippet"
 // import Favorite_Snippet from "./pages/Favorite_Snippet"
 
 import './styles/App.css'
@@ -20,8 +20,8 @@ function App() {
         <Route path='/signup' element={<Signup />}/>
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/add_snippet" element={<Add_Snippet/>} />
-          <Route path="/favorite_snippet" element={<Favorite_Snippet/>} /> */}
+          <Route path="/add_snippet" element={<Add_Snippet/>} />
+          {/* <Route path="/favorite_snippet" element={<Favorite_Snippet/>} /> */}
         </Route>
       </Routes>
     </>
