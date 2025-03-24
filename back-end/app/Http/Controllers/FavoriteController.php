@@ -103,7 +103,8 @@ class FavoriteController extends Controller
     }
 
     function deleteFavorite(Request $request){
-        $user_id = $request["user_id"];
+        $user = JWTAuth::parseToken()->authenticate();
+        $user_id = $user->id;
         $snippet_id = $request["snippet_id"];
         if(!($user_id && $snippet_id)){
             return response()->json([
@@ -123,7 +124,7 @@ class FavoriteController extends Controller
         $favorite->delete();
         return response()->json([
             "success" => "true",
-            "snippet" => $favorite
+            "favorite" => $favorite
         ]);
     }
 }

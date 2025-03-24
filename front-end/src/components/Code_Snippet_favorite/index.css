@@ -1,4 +1,4 @@
-.snippet_code{
+.snippet_code_favorite{
     background-color: var(--snippet-bg);
     color: var(--snippet-color);
     padding: 1em;
@@ -33,9 +33,9 @@
     margin: 0.5em;
 }
 
-.snippet_code button{
+.snippet_code_favorite button{
     background-color: white;
-    color: black;
+    color: red;
     padding: 1em;
     border-radius: 10px;
     margin: 0.5em;
