@@ -62,6 +62,17 @@ class SnippetController extends Controller
         ]);
     }
 
+    function getMySnippet(){
+        $user = JWTAuth::parseToken()->authenticate();
+
+        $snippets = Snippet::where("user_id", $user->id)->get();
+        return response()->json([
+            "success" => "true",
+            "snippets" => $snippets,
+        ]);
+    }
+
+
     function deleteSnippet(Request $request){
         if(!$request["id"]){
             return response()->json([

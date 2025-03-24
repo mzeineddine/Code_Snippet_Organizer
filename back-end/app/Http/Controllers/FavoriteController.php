@@ -6,23 +6,25 @@ use App\Models\Favorite;
 use App\Models\Snippet;
 use App\Models\User;
 use Illuminate\Http\Request;
+use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 class FavoriteController extends Controller
 {
     //
     function getFavorites(Request $request){
-        $user_id = $request["user_id"];
+        $user = JWTAuth::parseToken()->authenticate();
+        $user_id = $user->id;
         if(!$user_id){
             return response()->json([
-                "success" => "false",
-                "error" => "No favorites"
+                "success" => "true",
+                "error" => "Missing Params"
             ]);
         }
         $favorites = Favorite::where("user_id", $user_id)->get();
         if(!$favorites){
             return response()->json([
-                "success" => "true",
-                "error" => "Missing Params"
+                "success" => "false",
+                "error" => "No favorites"
             ]);
         }
         return response()->json([
@@ -30,17 +32,44 @@ class FavoriteController extends Controller
             "favorites" => $favorites
         ]);
     }
-    function addFavorite(Request $request){
-        $user_id = $request["user_id"];
-        $snippet_id = $request["snippet_id"];
 
+    function getFavoriteSnippets(Request $request){
+        $user = JWTAuth::parseToken()->authenticate();
+        $user_id = $user->id;
+        if(!$user_id){
+            return response()->json([
+                "success" => "true",
+                "error" => "Missing Params"
+            ]);
+        }
+        $favorites = Favorite::where("user_id", $user_id)->get();
+        if(!$favorites){
+            return response()->json([
+                "success" => "false",
+                "error" => "No favorites"
+            ]);
+        }
+        $snippets= [];
+        foreach ($favorites as $favorite) {
+            $snippet = Snippet::find($favorite->snippet_id);
+            $snippets[] = $snippet;
+        }
+        return response()->json([
+            "success" => "true",
+            "snippets" => $snippets
+        ]);
+    }
+
+    function addFavorite(Request $request){
+        $user = JWTAuth::parseToken()->authenticate();
+        $user_id = $user->id;
+        $snippet_id = $request["snippet_id"];
         if(!($user_id && $snippet_id)){
             return response()->json([
                 "success" => "false",
                 "error" => "Missing Params"
             ]);
         }
-        $user = User::find($user_id);
         if(!$user){
             return response()->json([
                 "success" => "false",
@@ -68,7 +97,7 @@ class FavoriteController extends Controller
         $favorite->user_id = $user_id;
         $favorite->save();
         return response()->json([
-            "success" => "false",
+            "success" => true,
             "favorite" => $favorite
         ]);
     }
