@@ -51,7 +51,7 @@ class FavoriteController extends Controller
         }
         $snippets= [];
         foreach ($favorites as $favorite) {
-            $snippet = Snippet::find($favorite->snippet_id);
+            $snippet = Snippet::with("tags")->find($favorite->snippet_id);
             $snippets[] = $snippet;
         }
         return response()->json([

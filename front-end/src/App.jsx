@@ -10,6 +10,7 @@ import Favorite_Snippet from "./pages/Favorite_Snippet"
 
 import './styles/App.css'
 import My_Snippets from './pages/My_Snippets'
+import Edit_Snippet from './pages/Edit_Snippet'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Home />} />
           <Route path="/add_snippet" element={<Add_Snippet/>} />
+          <Route path="/edit_snippet" element={<Edit_Snippet/>} />
           <Route path='my_snippet' element={<My_Snippets/>} />
           <Route path="/favorite_snippet" element={<Favorite_Snippet/>} />
         </Route>

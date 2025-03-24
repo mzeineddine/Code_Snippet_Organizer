@@ -1,0 +1,42 @@
+.snippet_code_mine{
+    background-color: var(--snippet-bg);
+    color: var(--snippet-color);
+    padding: 1em;
+    border-radius: 10px;
+}
+
+.content{
+    padding: 1em;
+    font-size: 1.5em;
+    height: 100%;
+    background-color: white;
+    color: var(--snippet-bg);
+    border-radius: 5px;
+    margin: 0.5em;
+}
+
+.title{
+    padding: 0.5em;
+    height: 100%;
+    background-color: rgb(4, 78, 139);
+    color: white;
+    border-radius: 5px;
+    margin: 0.5em;
+}
+
+.language{
+    padding: 0.5em;
+    height: 100%;
+    background-color: rgb(4, 78, 139);
+    color: white;
+    border-radius: 5px;
+    margin: 0.5em;
+}
+
+.snippet_code_mine button{
+    background-color: white;
+    color: red;
+    padding: 1em;
+    border-radius: 10px;
+    margin: 0.5em;
+}

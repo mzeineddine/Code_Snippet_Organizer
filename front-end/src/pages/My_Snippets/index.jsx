@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { request } from "../../utils/axios";
 import { requestMethods } from "../../utils/request_methods";
-import Code_Snippet from "../../components/Code_Snippet"
+import Code_Snippet_Mine from "../../components/Code_Snippet_Mine"
 const My_Snippets = () => {
     const base_url = "http://127.0.0.1:8000/api/v0.1/";
     const [snippets, setSnippets] = useState([]);
@@ -19,7 +19,7 @@ const My_Snippets = () => {
 
         } else {
             console.log(response);
-            alert(response.message)
+            alert("Deletion Succeed")
         }
     }
     useEffect(() => {
@@ -29,7 +29,7 @@ const My_Snippets = () => {
         <div className="home">
             {
                 snippets.map((snippet, index) => {
-                    return <Code_Snippet key={index} snippet={snippet}/>
+                    return <Code_Snippet_Mine key={index} snippet={snippet}/>
                 })
             }
         </div>

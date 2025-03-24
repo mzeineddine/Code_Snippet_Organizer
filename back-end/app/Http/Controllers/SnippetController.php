@@ -65,7 +65,7 @@ class SnippetController extends Controller
     function getMySnippet(){
         $user = JWTAuth::parseToken()->authenticate();
 
-        $snippets = Snippet::where("user_id", $user->id)->get();
+        $snippets = Snippet::with("tags")->where("user_id", $user->id)->get();
         return response()->json([
             "success" => "true",
             "snippets" => $snippets,
